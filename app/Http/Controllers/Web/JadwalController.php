@@ -33,4 +33,23 @@ class JadwalController extends Controller
         $this->service->createSchedule($request->validated());
         return redirect()->route('jadwal.index')->with('success', 'Jadwal pelayanan berhasil dibuat.');
     }
+
+    public function edit($id)
+    {
+        $jadwal = $this->service->getSchedule($id);
+        $jemaat = \App\Models\Jemaat::where('status_anggota', 'Aktif')->get();
+        return view('jadwal.edit', compact('jadwal', 'jemaat'));
+    }
+
+    public function update(StoreJadwalRequest $request, $id)
+    {
+        $this->service->updateSchedule($id, $request->validated());
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal pelayanan berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $this->service->deleteSchedule($id);
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal pelayanan berhasil dihapus.');
+    }
 }

@@ -38,6 +38,31 @@ class JadwalRepository
         });
     }
 
+    public function findById(int $id): JadwalPelayanan
+    {
+        return JadwalPelayanan::with('jemaatPetugas')->findOrFail($id);
+    }
+
+    public function update(int $id, array $data, array $petugas): JadwalPelayanan
+    {
+        return DB::transaction(function () use ($id, $data, $petugas) {
+            $jadwal = JadwalPelayanan::findOrFail($id);
+            $jadwal->update($data);
+
+            // Sync petugas: delete old and create new
+            $jadwal->petugas()->delete();
+            foreach ($petugas as $p) {
+                PetugasPelayanan::create([
+                    'jadwal_pelayanan_id' => $jadwal->id,
+                    'jemaat_id' => $p['jemaat_id'],
+                    'peran' => $p['peran']
+                ]);
+            }
+
+            return $jadwal->load('jemaatPetugas');
+        });
+    }
+
     public function delete(int $id): bool
     {
         return JadwalPelayanan::findOrFail($id)->delete();
