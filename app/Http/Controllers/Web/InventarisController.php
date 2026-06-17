@@ -33,4 +33,10 @@ class InventarisController extends Controller
         $this->service->createItem($request->validated());
         return redirect()->route('inventaris.index')->with('success', 'Barang inventaris berhasil ditambahkan.');
     }
+
+    public function report()
+    {
+        $items = $this->service->listItems([]);
+        return view('inventaris.report', compact('items'));
+    }
 }

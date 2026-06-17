@@ -61,6 +61,11 @@ class JemaatService
         }
     }
 
+    public function getJemaatReport()
+    {
+        return $this->repository->getAll([]);
+    }
+
     /**
      * Batch update status jemaat untuk pembaruan tahunan.
      */

@@ -50,4 +50,10 @@ class JemaatController extends Controller
         $this->service->deleteJemaat($id);
         return redirect()->route('jemaat.index')->with('success', 'Data jemaat berhasil dihapus.');
     }
+
+    public function report()
+    {
+        $jemaat = $this->service->getJemaatReport();
+        return view('jemaat.report', compact('jemaat'));
+    }
 }
