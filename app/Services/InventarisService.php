@@ -33,6 +33,33 @@ class InventarisService
         }
     }
 
+    public function getItem(int $id)
+    {
+        return $this->repository->findById($id);
+    }
+
+    public function updateItem(int $id, array $data)
+    {
+        try {
+            return DB::transaction(function () use ($id, $data) {
+                return $this->repository->update($id, $data);
+            });
+        } catch (Exception $e) {
+            Log::error("Gagal memperbarui inventaris ID {$id}: " . $e->getMessage());
+            throw $e;
+        }
+    }
+
+    public function deleteItem(int $id)
+    {
+        try {
+            return $this->repository->delete($id);
+        } catch (Exception $e) {
+            Log::error("Gagal menghapus inventaris ID {$id}: " . $e->getMessage());
+            throw $e;
+        }
+    }
+
     public function getAssetReport()
     {
         return $this->repository->getAssetSummary();

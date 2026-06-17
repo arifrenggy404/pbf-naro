@@ -28,6 +28,11 @@ class InventarisRepository
         return Inventaris::create($data);
     }
 
+    public function findById(int $id): Inventaris
+    {
+        return Inventaris::findOrFail($id);
+    }
+
     public function update(int $id, array $data): Inventaris
     {
         $item = Inventaris::findOrFail($id);

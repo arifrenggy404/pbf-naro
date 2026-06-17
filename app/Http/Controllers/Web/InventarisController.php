@@ -34,6 +34,24 @@ class InventarisController extends Controller
         return redirect()->route('inventaris.index')->with('success', 'Barang inventaris berhasil ditambahkan.');
     }
 
+    public function edit($id)
+    {
+        $item = $this->service->getItem($id);
+        return view('inventaris.edit', compact('item'));
+    }
+
+    public function update(StoreInventarisRequest $request, $id)
+    {
+        $this->service->updateItem($id, $request->validated());
+        return redirect()->route('inventaris.index')->with('success', 'Barang inventaris berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $this->service->deleteItem($id);
+        return redirect()->route('inventaris.index')->with('success', 'Barang inventaris berhasil dihapus.');
+    }
+
     public function report()
     {
         $items = $this->service->listItems([]);
