@@ -524,9 +524,7 @@
             </div>
             
             <div class="mt-12 text-center bg-amber-50 dark:bg-slate-800 rounded-2xl p-6 sm:p-8 border border-amber-200/50 dark:border-slate-700">
-                <p class="text-sm text-slate-700 dark:text-slate-300 mb-4 max-w-2xl mx-auto">
-                    Untuk mendaftarkan sakramen baptisan, krisma, atau pernikahan, silakan masuk ke portal petugas jemaat atau menghubungi sekretariat untuk dibantu oleh petugas admin gereja kami.
-                </p>
+
                 @auth
                     <a href="{{ route('dashboard') }}" class="inline-flex items-center px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-sm font-semibold transition-all duration-300 shadow-md shadow-amber-900/10">
                         <i class="fa-solid fa-arrow-right mr-2"></i> Ajukan via Dashboard
