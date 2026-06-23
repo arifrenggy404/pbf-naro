@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CMS Gereja</title>
+    <title>Login - Sistem Informasi Gereja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -105,7 +105,7 @@
     <div class="login-card">
         <div class="login-header">
             <i class="fas fa-church"></i>
-            <h1>CMS Gereja</h1>
+            <h1>Sistem Informasi Gereja</h1>
             <p style="color: #7f8c8d; font-size: 0.9rem;">Sistem Informasi Manajemen</p>
         </div>
 
@@ -129,7 +129,7 @@
         </form>
         
         <div style="margin-top: 25px; text-align: center; font-size: 0.8rem; color: #bdc3c7;">
-            &copy; 2026 CMS Gereja. All rights reserved.
+            &copy; 2026 Sistem Informasi Gereja. All rights reserved.
         </div>
     </div>
 </body>
